@@ -12,10 +12,19 @@ const analysisSchema = new mongoose.Schema({
 
     // From Python (calculated)
     atsScore: Number, // 0-100, rule-based
-    fitScore: Number, // 0-100, cosine similarity (null if no JD)
+    fitScore: {
+        type: Number,
+        default: null
+    }, // 0-100, cosine similarity (null if no JD)
     extractedSkills: [String],  // spaCy extracted
-    matchedSkills: [String],
-    missingSkills: [String],
+    matchedSkills: {
+        type: [String],
+        default: null
+    },
+    missingSkills: {
+        type: [String],
+        default: null
+    },
 
     // detailed ATS scoring breakdown
     atsBreakdown: {
