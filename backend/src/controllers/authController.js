@@ -63,4 +63,17 @@ const login = asyncHandler(async function(req, res){
     }, "Logged in successfully"))
 })
 
+const logout = asyncHandler(async function(req, res){
+    const user = req.user // no need to check req.user -> null as we have verifyAccessToken before this controller
+    user.refreshToken = null
+    await user.save()
+    res.clearCookie("refreshToken", {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "strict"
+    })
+
+    res.status(200).json(new ApiResponse(200, "Logged out successfully"))
+})
+
 export {register, login}
