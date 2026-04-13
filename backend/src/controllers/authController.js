@@ -76,11 +76,16 @@ const logout = asyncHandler(async function(req, res){
     res.status(200).json(new ApiResponse(200, "Logged out successfully"))
 })
 
-const refresh = asyncHandler(async function(req, res){
+const refresh = asyncHandler(function(req, res){
     const user = req.user
     const accessToken = user.generateAccessToken()
 
     res.status(200).json(new ApiResponse(200, {accessToken}, "Access Token refreshed Successfully"))
 })
 
-export {register, login}
+const getMe = asyncHandler(function(req, res){
+    const user = req.user // we can directly return as well
+    res.status(200).json(new ApiResponse(200, {user}, "User data fetched successfully")) // password is already excluded from user by verifyAccessToken middleware
+})
+
+export {register, login, logout, refresh, getMe}
