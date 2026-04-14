@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 
-# from extractor import extract_text_from_pdf # extractor can be used as a backup later but for now we will use pdf-parse in node
+from extractor import extract_text_from_pdf
 from skills_list import SKILLS
 from matcher import calculate_fit_score, extract_skills, get_matched_missing
 from ats_scorer import calculate_ats_score
@@ -13,6 +13,20 @@ CORS(app)
 @app.route('/health', methods=['GET'])
 def health():
     return jsonify({ "status": "ok" })
+
+@app.route('/extract-text', methods=['POST'])
+def extract_text():
+    if 'file' not in request.files:
+        return jsonify({ "error": "No file provided" }), 400
+    
+    file = request.files['file']
+    pdf_bytes = file.read()
+    text = extract_text_from_pdf(pdf_bytes)
+    
+    if not text:
+        return jsonify({ "error": "Could not extract text" }), 400
+    
+    return jsonify({ "text": text })
 
 @app.route('/extract', methods=['POST'])
 def extract():

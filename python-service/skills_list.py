@@ -1,7 +1,8 @@
 SKILLS = [
     # Languages
-    "javascript", "python", "java", "c++", "c", "typescript",
-    "ruby", "kotlin", "swift", "go", "rust", "php", "scala",
+    "javascript", "python", "java", "c++", "c programming", 
+    "r programming", "typescript", "ruby", "kotlin", "swift",
+    "go", "rust", "php", "scala",
 
     # Frontend
     "react", "next.js", "vue", "angular", "svelte",
