@@ -16,3 +16,13 @@ async function extractTextFromPDF(fileBuffer, fileName) {
 
     return response.data.text
 }
+
+async function analyzeResume(resumeText, jdText) {
+    const response = await axios.post(`${process.env.PYTHON_SERVICE_URL}/extract`, {
+        resumeText: resumeText,
+        jdText: jdText
+    })
+    return response.data
+}
+
+export { extractTextFromPDF, analyzeResume }
