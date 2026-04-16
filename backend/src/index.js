@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser"
 import { connectDB } from "./utils/db.js"
 import errorHandler from "./middleware/errorHandler.js"
 import authRoutes from "./routes/authRoutes.js"
+import analysisRoutes from "./routes/analysisRoutes.js"
 
 dotenv.config()
 
@@ -21,6 +22,7 @@ app.get("/", (_, res) => {
 })
 
 app.use('/api/auth/', authRoutes)
+app.use('/api/analysis', analysisRoutes)
 
 app.use(errorHandler)
 
