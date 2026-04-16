@@ -62,6 +62,14 @@ const getMyAnalyses = asyncHandler(async (req, res) => {
     return res.status(200).json(new ApiResponse(200, analyses, "Analyses fetched successfully"))
 })
 
-
+const getAnalysisById = asyncHandler(async (req, res) => {
+    const analysis = await Analysis.findOne({
+        _id: req.params.id,
+        userId: req.user._id
+    })
+    if(!analysis) throw new ApiError(404, "Analysis not found")
+    return res.status(200).json(new ApiResponse(200, analysis, "Analysis fetched successfully"))
+})
 
 export default runAnalysis
+export { getMyAnalyses, getAnalysisById }
