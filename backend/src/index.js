@@ -2,11 +2,14 @@ import express from "express"
 import dotenv from "dotenv"
 import cors from "cors"
 import cookieParser from "cookie-parser"
+import dns from "dns"
 
 import { connectDB } from "./utils/db.js"
 import errorHandler from "./middleware/errorHandler.js"
 import authRoutes from "./routes/authRoutes.js"
 import analysisRoutes from "./routes/analysisRoutes.js"
+
+dns.setServers(["1.1.1.1", "8.8.8.8"])
 
 dotenv.config()
 
