@@ -1,0 +1,60 @@
+import { createContext, useEffect, useState } from "react";
+
+import api, { setAccessToken } from "../api/axios";
+
+export const AuthContext = createContext();
+
+export function AuthContextProvider({ children }) {
+  const [user, setUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // will check if the user is logged in or not
+  useEffect(() => {
+    const checkAuth = async () => {
+      try {
+        const { data } = await api.get("/auth/me");
+        setUser(data.data.user);
+      } catch (error) {
+        setUser(null);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    checkAuth();
+  }, []);
+
+  const login = async (email, password) => {
+    const { data } = await api.post("/auth/login", { email, password });
+    const { accessToken, userWithoutPassword } = data.data;
+    setAccessToken(accessToken);
+    setUser(userWithoutPassword);
+    return userWithoutPassword;
+  };
+
+  const register = async (name, email, password) => {
+    const { data } = await api.post("/auth/register", {
+      name,
+      email,
+      password,
+    });
+    return data.data;
+  };
+
+  const logout = async () => {
+    try {
+        await api.post("/auth/logout");
+    } catch (error) {
+        console.error("Logout failed on server, clearing local state anyway");
+    }finally{
+        setAccessToken(null)
+        setUser(null)
+    }
+  };
+  // no need for refresh as that is being handled in axios instance
+  return (
+    <AuthContext.Provider value={{ user, isLoading, login, register, logout }}>
+        {children}
+    </AuthContext.Provider>
+  )
+
+}
