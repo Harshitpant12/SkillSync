@@ -124,9 +124,14 @@ function Home() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.3 }}
                     className='text-white text-4xl md:text-7xl my-4'>Beat the ATS. <br /> Land the interview</motion.h1>
-                    <Link to='/register' className='inline-flex items-center rounded-4xl text-xl bg-white hover:bg-white/80 text-black px-6 py-5 mt-6 md:mt-10'>
+                    <motion.Link
+                    initial={{opacity: 0, y: 40}}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.3 }}
+                    to='/register'
+                    className='inline-flex items-center rounded-4xl text-xl bg-white hover:bg-white/80 text-black px-6 py-5 mt-6 md:mt-10'>
                         Start Free Analysis <ArrowUpRight size={20} className='ml-2' />
-                    </Link>
+                    </motion.Link>
                 </div>
 
         </div>
@@ -136,7 +141,12 @@ function Home() {
             <div className="max-w-7xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-8">
                 
                 {/* Left column*/}
-                <div className="flex flex-col justify-start">
+                <motion.div
+                initial={{ opacity: 0, x: -100 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 2.0, ease: "easeOut" }}
+                className="flex flex-col justify-start">
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 leading-[1.1]">
                         Decoding the algorithms to unlock <br className="hidden md:block" />
                         
@@ -145,23 +155,34 @@ function Home() {
                             <span className="animate-pulse font-normal text-blue-500">_</span>
                         </span>
                     </h2>
-                </div>
+                </motion.div>
 
                 {/* Right column */}
-                <div className="flex flex-col gap-6 text-lg md:text-xl text-gray-600 font-medium leading-relaxed md:pl-10">
+                <motion.div
+                initial={{ opacity: 0, x: 100 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 2.0, ease: "easeOut" }}
+                className="flex flex-col gap-6 text-lg md:text-xl text-gray-600 font-medium leading-relaxed md:pl-10">
                     <p>
                         Our AI parsing engine translates complex job descriptions into a precise, step-by-step roadmap. In seconds, SkillSync analyzes your resume exactly how enterprise tracking systems do, pinpointing hidden formatting traps and missing keywords.
                     </p>
                     <p>
                         This technology eliminates the guesswork from the job hunt, giving highly qualified candidates the unfair advantage they need to bypass the algorithm and get their resume in front of a human.
                     </p>
-                </div>
+                </motion.div>
                 
             </div>
         </div>
 
         {/* bento grid to build user trust */}
-        <div className="w-full bg-white py-24 px-6 md:py-32 flex justify-center">
+        <motion.div 
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 2.0, ease: "easeOut" }}
+            className="w-full bg-white py-24 px-6 md:py-32 flex justify-center"
+        >
             <div className="max-w-6xl w-full flex flex-col gap-16">
                 
                 {/* Section Header */}
@@ -242,10 +263,16 @@ function Home() {
 
                 </div>
             </div>
-        </div>
+        </motion.div>
 
         {/* pipeline or how it works section */}
-        <div className="w-full bg-black py-24 px-6 md:py-32 flex justify-center border-t border-gray-800 relative overflow-hidden">
+        <motion.div 
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 2.0, ease: "easeOut" }}
+            className="w-full bg-black py-24 px-6 md:py-32 flex justify-center border-t border-gray-800 relative overflow-hidden"
+        >
             
             {/* Subtle Background Glow (the center one) */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-lg h-96 bg-blue-600/20 blur-[120px] rounded-full pointer-events-none"></div>
@@ -306,7 +333,7 @@ function Home() {
 
                 </div>
             </div>
-        </div>
+        </motion.div>
 
         {/* Infinite Scrolling section */}
         <div className="w-full bg-white py-10 border-t border-b border-gray-200 overflow-hidden flex flex-col items-center">
@@ -331,7 +358,13 @@ function Home() {
         </div>
                     
         {/* CTA & Footer sections */}
-        <div className="w-full bg-black flex flex-col items-center pt-24 md:pt-32 border-t border-gray-900">
+        <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="w-full bg-black flex flex-col items-center pt-24 md:pt-32 border-t border-gray-900"
+        >
             
             {/* Call to Action */}
             <div className="max-w-4xl w-full px-6 flex flex-col items-center text-center mb-24 md:mb-32 relative z-10">
@@ -397,7 +430,7 @@ function Home() {
 
                 </div>
             </footer>
-        </div>
+        </motion.div>
 
 
     </>
