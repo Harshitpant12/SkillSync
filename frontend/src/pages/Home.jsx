@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from 'react-router-dom'
 import myVideo from '../assets/hero-bg.mp4';
-import { MoveUpRightIcon, X } from "lucide-react"
+import { AlertTriangle, CheckCircle2, FileWarning, MoveUpRightIcon, X } from "lucide-react"
 
 function Home() {
 
@@ -157,6 +157,90 @@ function Home() {
                     </p>
                 </div>
                 
+            </div>
+        </div>
+
+        {/* bento grid to build user trust */}
+        <div className="w-full bg-white py-24 px-6 md:py-32 flex justify-center">
+            <div className="max-w-6xl w-full flex flex-col gap-16">
+                
+                {/* Section Header */}
+                <div className="flex flex-col items-center text-center gap-4">
+                    <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-gray-900">
+                        See exactly what the ATS sees.
+                    </h2>
+                    <p className="text-lg text-gray-500 max-w-2xl">
+                        Stop guessing why you were rejected. Our dashboard breaks down your resume line by line, exposing the hidden metrics recruiters use to filter you out.
+                    </p>
+                </div>
+
+                {/* The Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    
+                    {/* Card 1: The Scorecard */}
+                    <div className="md:col-span-2 bg-gray-50 rounded-3xl p-8 border border-gray-200 flex flex-col justify-between overflow-hidden relative group">
+                        <div>
+                            <h3 className="text-xl font-bold text-gray-900 mb-2">Live Resume Scoring</h3>
+                            <p className="text-gray-500">We grade your resume against the exact job description.</p>
+                        </div>
+                        
+                        {/* The Score Widget */}
+                        <div className="mt-12 bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex items-center justify-between transition-transform duration-500 group-hover:-translate-y-2">
+                            <div className="flex flex-col">
+                                <span className="text-sm font-medium text-gray-400 uppercase tracking-wider">Match Rate</span>
+                                <span className="text-5xl font-black text-green-500 tracking-tighter">84%</span>
+                            </div>
+                            <div className="text-right flex flex-col gap-2">
+                                <div className="flex items-center gap-2 text-sm font-medium text-gray-700">
+                                    <CheckCircle2 size={16} className="text-green-500" /> Impact Quantified
+                                </div>
+                                <div className="flex items-center gap-2 text-sm font-medium text-gray-700">
+                                    <CheckCircle2 size={16} className="text-green-500" /> Action Verbs Used
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Card 2: Keyword Gap Analysis */}
+                    <div className="bg-gray-50 rounded-3xl p-8 border border-gray-200 flex flex-col relative group">
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">Keyword Gaps</h3>
+                        <p className="text-gray-500 mb-8">Discover the mandatory skills your resume is missing.</p>
+                        
+                        {/* Missing Skills */}
+                        <div className="flex flex-wrap gap-2 mt-auto transition-transform duration-500 group-hover:-translate-y-2">
+                            <span className="bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm font-medium flex items-center gap-1">
+                                <AlertTriangle size={14} /> Docker
+                            </span>
+                            <span className="bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm font-medium flex items-center gap-1">
+                                <AlertTriangle size={14} /> CI/CD
+                            </span>
+                            <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-medium">React.js</span>
+                            <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-medium">Node.js</span>
+                        </div>
+                    </div>
+
+                    {/* Card 3: Formatting Traps */}
+                    <div className="md:col-span-3 bg-gray-900 rounded-3xl p-8 md:p-12 border border-gray-800 flex flex-col md:flex-row items-center justify-between text-white overflow-hidden">
+                        <div className="max-w-xl mb-8 md:mb-0">
+                            <h3 className="text-2xl font-bold mb-2">Formatting Trap Detection</h3>
+                            <p className="text-gray-400 text-lg">
+                                Invisible tables, complex columns, and custom fonts break ATS parsers. We scan the underlying code of your PDF to ensure it is 100% machinen readable.
+                            </p>
+                        </div>
+                        
+                        {/* Scan Alert */}
+                        <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 flex items-start gap-4 w-full md:w-auto">
+                            <div className="bg-red-500/20 p-3 rounded-full text-red-400">
+                                <FileWarning size={24} />
+                            </div>
+                            <div>
+                                <div className="font-bold text-lg">Parser Error Detected</div>
+                                <div className="text-sm text-gray-300">2 column layout found. <br/> Fix required for Workday ATS.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
 
