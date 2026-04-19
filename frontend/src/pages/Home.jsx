@@ -308,6 +308,28 @@ function Home() {
             </div>
         </div>
 
+        {/* Infinite Scrolling section */}
+        <div className="w-full bg-white py-10 border-t border-b border-gray-200 overflow-hidden flex flex-col items-center">
+            <p className="text-sm font-jetbrains font-bold text-gray-400 uppercase tracking-widest mb-6">
+                Engineered to bypass strict enterprise parsers
+            </p>
+            
+            {/* Infinite Scrolling Container (This is the only part that moves) */}
+            <div className="relative w-full max-w-7xl flex overflow-hidden group">
+                <motion.div 
+                    animate={{ x: ["0%", "-50%"] }}
+                    transition={{ ease: "linear", duration: 15, repeat: Infinity }}
+                    className="flex whitespace-nowrap gap-16 md:gap-32 items-center px-8"
+                >
+                    {["Workday", "Greenhouse", "Lever", "Taleo", "Ashby", "SmartRecruiters", "iCIMS", "Workday", "Greenhouse", "Lever", "Taleo", "Ashby", "SmartRecruiters", "iCIMS"].map((ats, idx) => (
+                        <span key={idx} className="text-2xl md:text-3xl font-black text-gray-300 tracking-tighter">
+                            {ats}
+                        </span>
+                    ))}
+                </motion.div>
+            </div>
+        </div>
+
 
     </>
   )
