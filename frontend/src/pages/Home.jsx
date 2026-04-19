@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from 'react-router-dom'
 import myVideo from '../assets/hero-bg.mp4';
-import { AlertTriangle, CheckCircle2, Cpu, FileWarning, MoveUpRightIcon, Target, UploadCloud, X } from "lucide-react"
+import { AlertTriangle, ArrowRight, ArrowUp, ArrowUpRight, CheckCircle2, Cpu, FileWarning, MoveUpRightIcon, Target, UploadCloud, X } from "lucide-react"
 
 function Home() {
 
@@ -124,8 +124,8 @@ function Home() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.3 }}
                     className='text-white text-4xl md:text-7xl my-4'>Beat the ATS. <br /> Land the interview</motion.h1>
-                    <Link to='/register' className='inline-block rounded-4xl text-xl bg-white hover:bg-white/80 text-black px-6 py-5 mt-6 md:mt-10'>
-                        Start Free Analysis
+                    <Link to='/register' className='inline-flex items-center rounded-4xl text-xl bg-white hover:bg-white/80 text-black px-6 py-5 mt-6 md:mt-10'>
+                        Start Free Analysis <ArrowUpRight size={20} className='ml-2' />
                     </Link>
                 </div>
 
@@ -328,6 +328,75 @@ function Home() {
                     ))}
                 </motion.div>
             </div>
+        </div>
+                    
+        {/* CTA & Footer sections */}
+        <div className="w-full bg-black flex flex-col items-center pt-24 md:pt-32 border-t border-gray-900">
+            
+            {/* Call to Action */}
+            <div className="max-w-4xl w-full px-6 flex flex-col items-center text-center mb-24 md:mb-32 relative z-10">
+                <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-white mb-6">
+                    Stop getting ghosted <br className="hidden md:block" />
+                    Start getting interviews
+                </h2>
+                <p className="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl font-medium">
+                    Every day you apply without optimizing your resume is another opportunity lost to an automated filter. Take back control of your job hunt.
+                </p>
+                <Link 
+                    to="/register" 
+                    className="group relative inline-flex items-center justify-center gap-3 bg-white text-black px-8 py-5 rounded-full text-xl font-bold transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(255,255,255,0.3)]"
+                >
+                    Start Free Analysis
+                    <ArrowRight size={20} className="transition-transform duration-300 group-hover:translate-x-1" />
+                </Link>
+                <p className="text-sm text-gray-600 mt-4 font-jetbrains">
+                    No credit card required. Execution takes 30 seconds.
+                </p>
+            </div>
+
+            {/* Footer Section */}
+            <footer className="w-full border-t border-gray-800 bg-black pt-12 pb-8 px-6 flex justify-center">
+                <div className="max-w-7xl w-full flex flex-col gap-8">
+                    
+                    {/* Top Row: Logo & Links */}
+                    <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-8">
+                        
+                        {/* Brand */}
+                        <div className="flex flex-col items-center md:items-start gap-2">
+                            <div className="font-black text-2xl tracking-tighter text-white font-jetbrains">
+                                SkillSync
+                            </div>
+                            <div className="text-sm text-gray-500 max-w-xs text-center md:text-left">
+                                The ultimate NLP parsing engine for modern full-stack developers and job seekers.
+                            </div>
+                        </div>
+
+                        {/* Footer Navigation */}
+                        <div className="flex gap-8 md:gap-16 text-sm font-medium">
+                            <div className="flex flex-col gap-3 text-center md:text-left">
+                                <span className="text-gray-400 uppercase tracking-wider text-xs mb-1">Product</span>
+                                <Link to="/" className="text-gray-500 hover:text-white transition-colors">Scanner</Link>
+                                <Link to="/" className="text-gray-500 hover:text-white transition-colors">Pricing</Link>
+                                <Link to="/" className="text-gray-500 hover:text-white transition-colors">Changelog</Link>
+                            </div>
+                            <div className="flex flex-col gap-3 text-center md:text-left">
+                                <span className="text-gray-400 uppercase tracking-wider text-xs mb-1">Legal</span>
+                                <Link to="/" className="text-gray-500 hover:text-white transition-colors">Privacy Policy</Link>
+                                <Link to="/" className="text-gray-500 hover:text-white transition-colors">Terms of Service</Link>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Bottom Row: Copyright */}
+                    <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-gray-800 text-xs text-gray-600">
+                        <p>&copy; {new Date().getFullYear()} SkillSync. All rights reserved.</p>
+                        <div className="flex gap-4 mt-4 md:mt-0">
+                            <p>Built for the modern job market.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </footer>
         </div>
 
 
