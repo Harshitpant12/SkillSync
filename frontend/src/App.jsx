@@ -4,6 +4,7 @@ import Register from './pages/Register'
 import Login from './pages/Login'
 import { AuthContextProvider } from './context/AuthContext'
 import ProtectedRoute from "./components/ProtectedRoute";
+import Dashboard from './pages/Dashboard'
 
 function App() {
 
@@ -18,7 +19,7 @@ function App() {
 
             {/* Protected Routes */}
             <Route element={<ProtectedRoute/> } >
-              {/* <Route path="/dashboard" element={<Dashboard />} /> */}
+              <Route path="/dashboard" element={<Dashboard />} />
               {/* all protected route will be added here */}
             </Route>
           </Routes>
