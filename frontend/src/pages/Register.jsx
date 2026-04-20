@@ -227,9 +227,9 @@ function Register() {
                 </form>
 
                 <div className="mt-8 text-center text-sm text-gray-500 font-medium">
-                    Already have an account?{' '}
+                    Workspace already initialized?{' '}
                     <Link to="/login" className="text-blue-600 hover:text-blue-700 font-bold transition-colors">
-                        Login here
+                        Authenticate here
                     </Link>
                 </div>
             </div>

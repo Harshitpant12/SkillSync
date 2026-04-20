@@ -129,7 +129,7 @@ function Home() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.3 }}
                     to='/register'
-                    className='inline-flex items-center rounded-4xl text-xl bg-white hover:bg-white/80 text-black px-6 py-5 mt-6 md:mt-10'>
+                    className='inline-flex items-center rounded-4xl text-xl bg-white hover:bg-white/80 text-black px-6 py-5 mt-6 md:mt-10 cursor-pointer'>
                         Start Free Analysis <ArrowUpRight size={20} className='ml-2' />
                     </motion.Link>
                 </div>
