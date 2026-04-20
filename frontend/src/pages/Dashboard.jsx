@@ -87,10 +87,9 @@ function Dashboard() {
             });
 
             toast.success('Analysis complete.', { id: toastId });
-            console.log("Backend Response:", response.data);
+            console.log("Backend Response:", response.data); // we can remove this after testing
             
-            // Redirect to a results page and pass the data (will decide this later)
-            // navigate(`/results/${response.data.data._id}`); 
+            navigate(`/results/${response.data.data._id}`);
             
         } catch (error) {
             console.error("Analysis Error:", error);

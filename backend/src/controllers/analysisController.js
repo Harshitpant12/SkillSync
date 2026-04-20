@@ -30,8 +30,7 @@ const runAnalysis = asyncHandler(async function (req, res) {
 
 
     if (user) {
-        // your schema expects these specific fields, not a nested object:
-        await Analysis.create({
+        const savedAnalysis = await Analysis.create({
             userId: user._id,
             resumeFileName: fileName,
             resumeText,
@@ -52,6 +51,8 @@ const runAnalysis = asyncHandler(async function (req, res) {
             sectionFeedback: feedback.sectionFeedback,
             overallFeedback: feedback.overallFeedback,
         })
+        
+        result._id = savedAnalysis._id; 
     }
 
     return res.status(200).json(new ApiResponse(200, result, "Analysis completed successfully"))

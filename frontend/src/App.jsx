@@ -5,6 +5,7 @@ import Login from './pages/Login'
 import { AuthContextProvider } from './context/AuthContext'
 import ProtectedRoute from "./components/ProtectedRoute";
 import Dashboard from './pages/Dashboard'
+import Results from './pages/Results'
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
             {/* Protected Routes */}
             <Route element={<ProtectedRoute/> } >
               <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/results/:id" element={<Results />} />
               {/* all protected route will be added here */}
             </Route>
           </Routes>

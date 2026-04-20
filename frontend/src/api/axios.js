@@ -10,7 +10,7 @@ export const getAccessToken = () => {
     return inMemoryAccessToken;
 }
 
-const BASE_URL = import.meta.env.VITE_API_URL;
+const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
 const api = axios.create({
     baseURL: BASE_URL,
@@ -46,16 +46,16 @@ api.interceptors.response.use(
                     {withCredentials: true}
                 )
 
-                const newAccessToken = refreshResponse.data.accessToken;
+                const newAccessToken = refreshResponse.data.data.accessToken; 
+                
                 setAccessToken(newAccessToken);
-
                 originalRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
 
                 return api(originalRequest);
-            } catch (error) {
-                setAccessToken(null); // the user is truly logged out
-
-                window.location.href = '/login'; // will adjust it later according to actual router
+                
+            } catch (refreshError) { 
+                setAccessToken(null); 
+                window.location.href = '/login'; 
                 return Promise.reject(refreshError);
             }
         }
@@ -63,4 +63,4 @@ api.interceptors.response.use(
     }
 )
 
-export default api
+export default api;
