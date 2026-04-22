@@ -10,9 +10,13 @@ app = Flask(__name__)
 CORS(app)
 
 # health check route, will be used to wake up Render
+@app.route('/', methods=['GET'])
 @app.route('/health', methods=['GET'])
 def health():
-    return jsonify({ "status": "ok" })
+    return jsonify({
+        "status": "active", 
+        "message": "SkillSync Python Engine is awake."
+    })
 
 @app.route('/extract-text', methods=['POST'])
 def extract_text():
