@@ -41,3 +41,5 @@ connectDB().then(() => {
 }).catch((err) => {
     console.log("Error : ", err.message);
 })
+
+export default app;
