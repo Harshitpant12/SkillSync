@@ -1,14 +1,14 @@
 import React, { useState, useRef, useContext } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { 
     UploadCloud, FileText, X, CheckCircle2, 
     LayoutDashboard, History, Settings, LogOut, 
     AlertCircle, Loader2, Menu, Target
 } from 'lucide-react';
 import toast, { Toaster } from 'react-hot-toast';
-import { AuthContext } from '../context/AuthContext';
-import api from '../api/axios';
+import { AuthContext } from '../../context/AuthContext';
+import api from '../../api/axios';
 
 function Dashboard() {
     const navigate = useNavigate();
@@ -113,9 +113,9 @@ function Dashboard() {
                     <button className="w-full flex items-center gap-3 px-4 py-3 bg-gray-800 text-white rounded-xl font-medium transition-colors">
                         <LayoutDashboard size={18} /> New Scan
                     </button>
-                    <button className="w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-800 hover:text-white rounded-xl font-medium transition-colors">
+                    <Link to="/history" className="w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-800 hover:text-white rounded-xl font-medium transition-colors">
                         <History size={18} /> Scan History
-                    </button>
+                    </Link>
                     <button className="w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-800 hover:text-white rounded-xl font-medium transition-colors">
                         <Settings size={18} /> Settings
                     </button>

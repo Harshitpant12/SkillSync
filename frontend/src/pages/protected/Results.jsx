@@ -5,7 +5,7 @@ import {
     ArrowLeft, Download, CheckCircle2, AlertTriangle, 
     XCircle, Zap, Target, TrendingUp, Sparkles, FileText, Briefcase
 } from 'lucide-react';
-import api from '../api/axios';
+import api from '../../api/axios';
 
 function Results() {
     const { id } = useParams();
