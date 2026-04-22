@@ -183,6 +183,27 @@ function Results() {
                                         )}
                                     </div>
                                 </div>
+
+                                {/* ATS Score Breakdown */}
+                                {data.atsBreakdown && (
+                                    <div className="bg-gray-50 rounded-2xl p-5 border border-gray-100 mt-6">
+                                        <h4 className="text-sm font-bold text-gray-900 mb-4 uppercase tracking-wider font-jetbrains">Score Breakdown</h4>
+                                        <div className="space-y-3">
+                                            {Object.entries(data.atsBreakdown).map(([key, value], i) => (
+                                                <div key={i} className="flex items-center justify-between">
+                                                    <span className="text-sm text-gray-600 capitalize">{key.replace(/([A-Z])/g, ' $1').trim()}</span>
+                                                    <div className="flex items-center gap-3 w-1/2">
+                                                        <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
+                                                            <div className="h-full bg-blue-500 rounded-full" style={{ width: `${value}%` }}></div>
+                                                        </div>
+                                                        <span className="text-xs font-bold text-gray-900 w-10 text-right">{Math.round(value)}%</span>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
+                                
                             </div>
                         </motion.div>
 
