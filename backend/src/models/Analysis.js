@@ -28,14 +28,11 @@ const analysisSchema = new mongoose.Schema({
 
     // detailed ATS scoring breakdown
     atsBreakdown: {
-        hasContactInfo: Boolean,
-        hasSummary: Boolean,
-        hasEducation: Boolean,
-        hasExperience: Boolean,
-        hasSkills: Boolean,
-        hasProjects: Boolean,
-        keywordDensity: Number,
-        formatting: Number, 
+        contactInfo: Number,
+        sectionCompleteness: Number,
+        impactAndMetrics: Number,
+        lengthOptimization: Number,
+        readability: Number
     },
 
     // From Gemini
