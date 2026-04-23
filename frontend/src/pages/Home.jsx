@@ -146,7 +146,7 @@ function Home() {
                 initial={{ opacity: 0, x: -100 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 2.0, ease: "easeOut" }}
+                transition={{ duration: 1.3, ease: "easeOut" }}
                 className="flex flex-col justify-start">
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 leading-[1.1]">
                         Decoding the algorithms to unlock <br className="hidden md:block" />
@@ -163,7 +163,7 @@ function Home() {
                 initial={{ opacity: 0, x: 100 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 2.0, ease: "easeOut" }}
+                transition={{ duration: 1.3, ease: "easeOut" }}
                 className="flex flex-col gap-6 text-lg md:text-xl text-gray-600 font-medium leading-relaxed md:pl-10">
                     <p>
                         Our AI parsing engine translates complex job descriptions into a precise, step-by-step roadmap. In seconds, SkillSync analyzes your resume exactly how enterprise tracking systems do, pinpointing hidden formatting traps and missing keywords.
@@ -181,7 +181,7 @@ function Home() {
             initial={{ opacity: 0, y: 100 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 2.0, ease: "easeOut" }}
+            transition={{ duration: 1.3, ease: "easeOut" }}
             className="w-full bg-white py-24 px-6 md:py-32 flex justify-center"
         >
             <div className="max-w-6xl w-full flex flex-col gap-16">
@@ -271,7 +271,7 @@ function Home() {
             initial={{ opacity: 0, y: 100 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 2.0, ease: "easeOut" }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
             className="w-full bg-black py-24 px-6 md:py-32 flex justify-center border-t border-gray-800 relative overflow-hidden"
         >
             
