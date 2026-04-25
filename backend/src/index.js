@@ -28,7 +28,7 @@ app.use(express.json())
 app.use(cookieParser())
 
 app.get("/", (_, res) => {
-    res.send("Welcome to the Screener API")
+    res.send("Welcome to the SkillSync API")
 })
 
 app.use('/api/auth/', authRoutes)
