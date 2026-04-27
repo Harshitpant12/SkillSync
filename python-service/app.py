@@ -18,6 +18,13 @@ def health():
         "message": "SkillSync Python Engine is awake."
     })
 
+@app.route('/wake', methods=['GET'])
+def wake():
+    return jsonify({
+        "status": "awake", 
+        "message": "Python NLP Engine is online and ready."
+    }), 200
+
 @app.route('/extract-text', methods=['POST'])
 def extract_text():
     if 'file' not in request.files:
