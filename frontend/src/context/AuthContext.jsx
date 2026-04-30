@@ -4,6 +4,12 @@ import api, { setAccessToken } from "../api/axios";
 
 export const AuthContext = createContext();
 
+const warmUpPythonService = () => {
+    api.get("/analysis/wake-python").catch(() => {
+      // silently ignore
+    });
+};
+
 export function AuthContextProvider({ children }) {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -14,6 +20,7 @@ export function AuthContextProvider({ children }) {
       try {
         const { data } = await api.get("/auth/me");
         setUser(data.data.user);
+        warmUpPythonService();
       } catch (error) {
         setUser(null);
       } finally {
@@ -28,6 +35,7 @@ export function AuthContextProvider({ children }) {
     const { accessToken, userWithoutPassword } = data.data;
     setAccessToken(accessToken);
     setUser(userWithoutPassword);
+    warmUpPythonService();
     return userWithoutPassword;
   };
 
