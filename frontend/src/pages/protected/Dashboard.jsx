@@ -4,7 +4,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { 
     UploadCloud, FileText, X, CheckCircle2, 
     LayoutDashboard, History, Settings, LogOut, 
-    AlertCircle, Loader2, Menu, Target
+    AlertCircle, Loader2, Menu, Target,
+    Zap
 } from 'lucide-react';
 import toast, { Toaster } from 'react-hot-toast';
 import { AuthContext } from '../../context/AuthContext';
@@ -20,15 +21,17 @@ function Dashboard() {
     const [file, setFile] = useState(null);
     const [jdText, setJdText] = useState("");
     const [isAnalyzing, setIsAnalyzing] = useState(false);
+    // Track Python service warmup status for UX feedback
+    const [serviceStatus, setServiceStatus] = useState("warming"); // "warming" | "ready" | "unknown"
     const fileInputRef = useRef(null);
 
     useEffect(() => {
         const wakeUpServices = async () => {
             try {
                 await api.get('/analysis/wake-python');
-                console.log("Pre-flight: Optimization engines initialized.");
+                setServiceStatus("ready");
             } catch (err) {
-                console.log("Pre-flight ping failed, but signal was sent.");
+                setServiceStatus("unknown");
             }
         };
         wakeUpServices();
@@ -171,6 +174,28 @@ function Dashboard() {
                         <div className="mb-8 md:mb-10">
                             <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight">Deploy new analysis</h1>
                             <p className="text-gray-500 mt-2 text-sm sm:text-base">Upload your resume in PDF format to process against ATS algorithms.</p>
+                            
+                            {/* Subtle service status indicator */}
+                            <div className="mt-3 inline-flex items-center gap-2 text-xs font-medium">
+                                {serviceStatus === "warming" && (
+                                    <span className="flex items-center gap-1.5 text-amber-600 bg-amber-50 px-2.5 py-1 rounded-full border border-amber-200">
+                                        <Loader2 size={11} className="animate-spin" />
+                                        NLP engine initializing...
+                                    </span>
+                                )}
+                                {serviceStatus === "ready" && (
+                                    <span className="flex items-center gap-1.5 text-green-600 bg-green-50 px-2.5 py-1 rounded-full border border-green-200">
+                                        <Zap size={11} />
+                                        NLP engine ready
+                                    </span>
+                                )}
+                                {serviceStatus === "unknown" && (
+                                    <span className="flex items-center gap-1.5 text-gray-500 bg-gray-100 px-2.5 py-1 rounded-full border border-gray-200">
+                                        <AlertCircle size={11} />
+                                        First scan may take ~60s
+                                    </span>
+                                )}
+                            </div>
                         </div>
 
                         <AnimatePresence mode="wait">
